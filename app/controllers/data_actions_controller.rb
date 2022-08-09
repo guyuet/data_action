@@ -2,7 +2,7 @@ class DataActionsController < ApplicationController
     def get
       key = params[:key]
 
-      value = DataAction.find_by(key: key)?.value
+      value = DataAction.find_by(key: key)&.value
 
       render(json: {
         value: value
@@ -19,10 +19,10 @@ class DataActionsController < ApplicationController
         render(json:{
           message:"success"
         })
-        else
+      else
           render(json:{
             message:"error"
           })
       end
     end
-end
+  end
